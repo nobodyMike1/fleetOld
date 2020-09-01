@@ -1,0 +1,21 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="fleet">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/fleet</jta-data-source>
+        <class>com.everis.training.fleet.business.fleet.entity.Vehicle</class>
+        <class>com.everis.training.fleet.business.fleet.entity.Fleet</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fleet" /> <!-- BD Mane -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.driver" /> <!-- DB Driver -->
+            <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- DB User -->
+            <property name="javax.persistence.jdbc.password" value="hamis@12_" /> <!-- DB Password -->
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
