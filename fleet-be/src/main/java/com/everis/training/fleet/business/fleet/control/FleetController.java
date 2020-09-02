@@ -22,7 +22,7 @@ public class FleetController {
         repository.update(fleet);
     }
 
-    public void deleteFleet(int id) {
+    public void deleteFleet(Integer id) {
         repository.delete(id);
     }
 }

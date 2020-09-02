@@ -10,31 +10,29 @@ import java.util.List;
 public class VehicleController {
 
     @Inject
-    VehicleRepository repo;
+    VehicleRepository repository;
 
-    public List<Vehicle> getAllVehicles() {
-        return repo.getAll();
+    public void createVehicle(Vehicle vehicle) {
+        repository.create(vehicle);
     }
 
-    public String register(Vehicle v) {
-        if (v.getVin().length()==17) {
-            repo.registerVehicle(v);
-            return "Vehicle successfully registered.";
-        } else {
-            return "Vin must contain 17 alphanumeric characters. Unable to Register Vehicle.";
-        }
+    public Vehicle retrieveVehicle(Integer id) {
+        return repository.retrieve(id);
     }
 
-    public void delete(String vin) {
-        repo.deleteVehicle(vin);
+    public void updateVehicle(Vehicle vehicle) {
+        repository.update(vehicle);
     }
 
-    public Vehicle retrieve(String vin) {
-        if (vin.length() == 17) {
-            return repo.retrieveVehicle(vin);
-        } else {
-            return null;
-        }
+    public void deleteVehicle(Integer id) {
+        repository.delete(id);
     }
 
+    public Vehicle searchByVin(String vin) {
+        return repository.retrieveByVin(vin);
+    }
+
+    public List<Vehicle> searchUnreservedVehicles() {
+        return repository.searchUnreserved();
+    }
 }

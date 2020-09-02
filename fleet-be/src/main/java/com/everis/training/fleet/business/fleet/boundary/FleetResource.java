@@ -2,8 +2,6 @@ package com.everis.training.fleet.business.fleet.boundary;
 
 import com.everis.training.fleet.business.fleet.control.FleetController;
 import com.everis.training.fleet.business.fleet.entity.Fleet;
-import com.google.gson.Gson;
-import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -20,31 +18,25 @@ public class FleetResource {
     FleetController controller;
 
     @POST
-    public Response createFleet(@RequestBody String json) {
-        Gson gson = new Gson();
-        Fleet fleet = gson.fromJson(json, Fleet.class);
+    public Response createFleet(Fleet fleet) {
         controller.createFleet(fleet);
-        return Response.ok().entity(fleet.toString()).build();
+        return Response.ok().entity("Fleet created.").build();
     }
     @Path("{fleetId}")
     @GET
-    public Response retrieveFleet(@PathParam("fleetId") int id) {
-        Fleet f = controller.retrieveFleet(id);
-        Gson gson = new Gson();
-        return Response.ok().entity(gson.toJson(f)).build();
+    public Response retrieveFleet(@PathParam("fleetId") final Integer id) {
+        return Response.ok().entity(controller.retrieveFleet(id)).build();
     }
 
     @PUT
-    public Response updateFleet(@RequestBody String json) {
-        Gson gson = new Gson();
-        Fleet f = gson.fromJson(json, Fleet.class);
-        controller.updateFleet(f);
+    public Response updateFleet(Fleet fleet) {
+        controller.updateFleet(fleet);
         return Response.ok().entity("Fleet updated.").build();
     }
 
     @Path("{fleetId}")
     @DELETE
-    public Response deleteFleet(@PathParam("fleetId") final int id) {
+    public Response deleteFleet(@PathParam("fleetId") final Integer id) {
         controller.deleteFleet(id);
         return Response.ok().entity("Fleet removed.").build();
     }

@@ -4,16 +4,29 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "vehicles")
+@Table(name = "vehicles", schema = "public")
 public class Vehicle implements Serializable {
     @Id
+    private Integer id;
+
+    @Column
     private String vin;
 
-    @Column(name = "registration")
+    @Column
     private String registration;
 
-    @Column(name = "fleet")
-    private int fleet;
+    @Column
+    private Integer fleet;
+
+    // Gets and Sets
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getVin() {
         return vin;

@@ -5,10 +5,11 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value="EclipseLink-2.7.6.v20200427-rNA", date="2020-09-01T23:51:12")
-@StaticMetamodel(Fleet.class)
-public class Fleet_ { 
+@StaticMetamodel(Customer.class)
+public class Customer_ { 
 
-    public static volatile SingularAttribute<Fleet, String> name;
-    public static volatile SingularAttribute<Fleet, Integer> id;
+    public static volatile SingularAttribute<Customer, String> name;
+    public static volatile SingularAttribute<Customer, Integer> id;
+    public static volatile SingularAttribute<Customer, String> vehicle;
 
 }

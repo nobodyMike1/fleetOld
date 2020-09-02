@@ -785,12 +785,12 @@ false Z
 false Zulu
 true posixrules
 </TimeZones>
-      <StartupTime>1598435481</StartupTime>
+      <StartupTime>1598993718</StartupTime>
     </root>
     <database id="2" parent="1" name="fleet">
       <ObjectId>16407</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>664</IntrospectionStateNumber>
+      <IntrospectionStateNumber>705</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -847,7 +847,7 @@ true posixrules
       <Comment>standard public schema</Comment>
       <StateNumber>276</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>665</IntrospectionStateNumber>
+      <IntrospectionStateNumber>706</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="2" name="heap">
@@ -917,106 +917,167 @@ true posixrules
     <language id="25" parent="2" name="internal"/>
     <language id="26" parent="2" name="plpgsql"/>
     <language id="27" parent="2" name="sql"/>
-    <table id="28" parent="15" name="fleets">
-      <ObjectId>17642</ObjectId>
+    <table id="28" parent="15" name="customers">
+      <ObjectId>32802</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>647</StateNumber>
+      <StateNumber>692</StateNumber>
     </table>
-    <table id="29" parent="15" name="vehicles">
-      <ObjectId>17717</ObjectId>
+    <table id="29" parent="15" name="fleets">
+      <ObjectId>32777</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>663</StateNumber>
+      <StateNumber>691</StateNumber>
     </table>
-    <column id="30" parent="28" name="id">
+    <table id="30" parent="15" name="vehicles">
+      <ObjectId>32785</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>691</StateNumber>
+    </table>
+    <column id="31" parent="28" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>646</StateNumber>
+      <StateNumber>692</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="31" parent="28" name="name">
+    <column id="32" parent="28" name="name">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>646</StateNumber>
+      <StateNumber>692</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="32" parent="28" name="fleets_pkey">
-      <ObjectId>17648</ObjectId>
-      <StateNumber>646</StateNumber>
+    <column id="33" parent="28" name="vehicle">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>692</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="34" parent="28" name="customers_pkey">
+      <ObjectId>32808</ObjectId>
+      <StateNumber>692</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="33" parent="28" name="fleets_pkey">
-      <ObjectId>17649</ObjectId>
-      <StateNumber>646</StateNumber>
+    <key id="35" parent="28" name="customers_pkey">
+      <ObjectId>32809</ObjectId>
+      <StateNumber>692</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>customers_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="36" parent="28" name="customers_vehicle_fkey">
+      <ObjectId>32810</ObjectId>
+      <StateNumber>692</StateNumber>
+      <ColNames>vehicle</ColNames>
+      <RefTableId>32785</RefTableId>
+      <RefColPositions>2</RefColPositions>
+      <RefTableName>vehicles</RefTableName>
+      <RefKeyName>vehicles_vin_key</RefKeyName>
+      <RefColNames>vin</RefColNames>
+    </foreign-key>
+    <column id="37" parent="29" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>690</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="38" parent="29" name="name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>690</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="39" parent="29" name="fleets_pkey">
+      <ObjectId>32783</ObjectId>
+      <StateNumber>690</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="40" parent="29" name="fleets_pkey">
+      <ObjectId>32784</ObjectId>
+      <StateNumber>690</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>fleets_pkey</UnderlyingIndexName>
     </key>
-    <column id="34" parent="29" name="vin">
+    <column id="41" parent="30" name="id">
       <Position>1</Position>
-      <DataType>char(17)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>663</StateNumber>
-      <TypeId>1042</TypeId>
-    </column>
-    <column id="35" parent="29" name="registration">
-      <Position>2</Position>
-      <DataType>varchar|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>663</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="36" parent="29" name="fleet">
-      <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>663</StateNumber>
+      <StateNumber>691</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="37" parent="29" name="vehicles_pkey">
-      <ObjectId>17724</ObjectId>
-      <StateNumber>663</StateNumber>
-      <ColNames>vin</ColNames>
+    <column id="42" parent="30" name="vin">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>691</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="43" parent="30" name="registration">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>691</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="44" parent="30" name="fleet">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>691</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="45" parent="30" name="vehicles_pkey">
+      <ObjectId>32791</ObjectId>
+      <StateNumber>691</StateNumber>
+      <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="38" parent="29" name="vehicles_registration_key">
-      <ObjectId>17726</ObjectId>
-      <StateNumber>663</StateNumber>
+    <index id="46" parent="30" name="vehicles_vin_key">
+      <ObjectId>32793</ObjectId>
+      <StateNumber>691</StateNumber>
+      <ColNames>vin</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="47" parent="30" name="vehicles_registration_key">
+      <ObjectId>32795</ObjectId>
+      <StateNumber>691</StateNumber>
       <ColNames>registration</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="39" parent="29" name="vehicles_pkey">
-      <ObjectId>17725</ObjectId>
-      <StateNumber>663</StateNumber>
-      <ColNames>vin</ColNames>
+    <key id="48" parent="30" name="vehicles_pkey">
+      <ObjectId>32792</ObjectId>
+      <StateNumber>691</StateNumber>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>vehicles_pkey</UnderlyingIndexName>
     </key>
-    <key id="40" parent="29" name="vehicles_registration_key">
-      <ObjectId>17727</ObjectId>
-      <StateNumber>663</StateNumber>
+    <key id="49" parent="30" name="vehicles_vin_key">
+      <ObjectId>32794</ObjectId>
+      <StateNumber>691</StateNumber>
+      <ColNames>vin</ColNames>
+      <UnderlyingIndexName>vehicles_vin_key</UnderlyingIndexName>
+    </key>
+    <key id="50" parent="30" name="vehicles_registration_key">
+      <ObjectId>32796</ObjectId>
+      <StateNumber>691</StateNumber>
       <ColNames>registration</ColNames>
       <UnderlyingIndexName>vehicles_registration_key</UnderlyingIndexName>
     </key>
-    <foreign-key id="41" parent="29" name="vehicles_fleet_fkey">
-      <ObjectId>17728</ObjectId>
-      <StateNumber>663</StateNumber>
+    <foreign-key id="51" parent="30" name="vehicles_fleet_fkey">
+      <ObjectId>32797</ObjectId>
+      <StateNumber>691</StateNumber>
       <ColNames>fleet</ColNames>
-      <RefTableId>17642</RefTableId>
+      <RefTableId>32777</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>fleets</RefTableName>
       <RefKeyName>fleets_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <check id="42" parent="29" name="vehicles_vin_check">
-      <ObjectId>17720</ObjectId>
-      <StateNumber>663</StateNumber>
-      <ColNames>vin</ColNames>
-      <Predicate>length(vin) = 17</Predicate>
-    </check>
   </database-model>
 </dataSource>
