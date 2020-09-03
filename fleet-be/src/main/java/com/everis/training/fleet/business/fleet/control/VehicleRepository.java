@@ -29,7 +29,7 @@ public class VehicleRepository {
         entityManager.remove(entityManager.find(Vehicle.class, id));
     }
 
-    public Vehicle retrieveByVin(String vin) {
+    public Vehicle searchByVin(String vin) {
         Query query = entityManager.createNativeQuery("select * from vehicles where vin=?1", Vehicle.class);
         query.setParameter(1, vin);
         List<Vehicle> vehicle = query.getResultList();
