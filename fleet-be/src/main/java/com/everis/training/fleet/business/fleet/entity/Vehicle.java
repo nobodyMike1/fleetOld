@@ -4,6 +4,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "vehicleByVin",
+                query="select v from Vehicle v where v.vin=:vin"),
+        @NamedQuery(name = "unreservedVehicles",
+                query="select v from Vehicle v where not exists (" +
+                        "select c from Customer c where c.vehicle = v.vin)")
+})
 @Table(name = "vehicles", schema = "public")
 public class Vehicle implements Serializable {
     @Id

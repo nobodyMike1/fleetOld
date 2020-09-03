@@ -3,9 +3,7 @@ package com.everis.training.fleet.business.fleet.control;
 import com.everis.training.fleet.business.fleet.entity.Vehicle;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.List;
 
 @ApplicationScoped
@@ -30,15 +28,14 @@ public class VehicleRepository {
     }
 
     public Vehicle searchByVin(String vin) {
-        Query query = entityManager.createNativeQuery("select * from vehicles where vin=?1", Vehicle.class);
-        query.setParameter(1, vin);
-        List<Vehicle> vehicle = query.getResultList();
-        return vehicle.get(0);
+         List<Vehicle> listVehicles = entityManager.createNamedQuery("vehicleByVin", Vehicle.class)
+                .setParameter("vin", vin)
+                .getResultList();
+         if (!listVehicles.isEmpty()) return listVehicles.get(0);
+         else return null;
     }
 
     public List<Vehicle> searchUnreserved() {
-        Query query = entityManager.createNativeQuery("select * from vehicles where vin not in " +
-                "( select vehicle from customers where vehicle is not null);\n", Vehicle.class);
-        return query.getResultList();
+        return entityManager.createNamedQuery("unreservedVehicles").getResultList();
     }
 }
