@@ -29,7 +29,7 @@ public class VehicleController {
     }
 
     public Vehicle searchByVin(String vin) {
-        return repository.retrieveByVin(vin);
+        return repository.searchByVin(vin);
     }
 
     public List<Vehicle> searchUnreservedVehicles() {
