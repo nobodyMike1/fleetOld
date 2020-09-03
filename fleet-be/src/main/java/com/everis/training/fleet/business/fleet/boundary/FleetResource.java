@@ -17,6 +17,11 @@ public class FleetResource {
     @Inject
     FleetController controller;
 
+    @GET
+    public Response retrieveAllVehicles() {
+        return Response.ok().entity(controller.retrieveAllFleets()).build();
+    }
+
     @POST
     public Response createFleet(Fleet fleet) {
         controller.createFleet(fleet);

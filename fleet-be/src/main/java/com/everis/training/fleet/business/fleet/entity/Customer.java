@@ -1,11 +1,12 @@
 package com.everis.training.fleet.business.fleet.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "allCustomers",
+                query = "select c from Customer c")
+})
 @Table(name = "customers", schema = "public")
 public class Customer {
     @Id

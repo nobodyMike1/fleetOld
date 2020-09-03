@@ -17,6 +17,11 @@ public class CustomerResource {
     @Inject
     CustomerController controller;
 
+    @GET
+    public Response retrieveAllCustomers() {
+        return Response.ok().entity(controller.retrieveAllCustomers()).build();
+    }
+
     @POST
     public Response createCustomer(Customer customer) {
         controller.createCustomer(customer);

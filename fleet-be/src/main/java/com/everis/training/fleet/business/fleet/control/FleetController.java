@@ -4,11 +4,16 @@ import com.everis.training.fleet.business.fleet.entity.Fleet;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 @ApplicationScoped
 public class FleetController {
     @Inject
     FleetRepository repository;
+
+    public List<Fleet> retrieveAllFleets() {
+        return repository.retrieveAll();
+    }
 
     public void createFleet(Fleet fleet) {
         repository.create(fleet);

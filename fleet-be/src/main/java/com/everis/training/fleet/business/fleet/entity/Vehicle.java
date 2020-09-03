@@ -5,6 +5,8 @@ import java.io.Serializable;
 
 @Entity
 @NamedQueries({
+        @NamedQuery(name = "allVehicles",
+                query = "select v from Vehicle v"),
         @NamedQuery(name = "vehicleByVin",
                 query="select v from Vehicle v where v.vin=:vin"),
         @NamedQuery(name = "unreservedVehicles",

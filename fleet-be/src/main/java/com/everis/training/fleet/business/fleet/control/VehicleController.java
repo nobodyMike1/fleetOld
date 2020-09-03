@@ -12,6 +12,10 @@ public class VehicleController {
     @Inject
     VehicleRepository repository;
 
+    public List<Vehicle> retrieveAllVehicles() {
+        return repository.retrieveAll();
+    }
+
     public void createVehicle(Vehicle vehicle) {
         repository.create(vehicle);
     }
@@ -35,4 +39,5 @@ public class VehicleController {
     public List<Vehicle> searchUnreservedVehicles() {
         return repository.searchUnreserved();
     }
+
 }

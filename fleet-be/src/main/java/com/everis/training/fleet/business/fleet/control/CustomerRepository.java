@@ -5,11 +5,16 @@ import com.everis.training.fleet.business.fleet.entity.Customer;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @ApplicationScoped
 public class CustomerRepository {
     @PersistenceContext(unitName = "fleet")
     EntityManager entityManager;
+
+    public List<Customer> retrieveAll() {
+        return entityManager.createNamedQuery("allCustomers").getResultList();
+    }
 
     public void create(Customer customer) {
         entityManager.persist(customer);

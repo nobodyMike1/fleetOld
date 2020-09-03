@@ -4,11 +4,16 @@ import com.everis.training.fleet.business.fleet.entity.Customer;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 @ApplicationScoped
 public class CustomerController {
     @Inject
     CustomerRepository repository;
+
+    public List<Customer> retrieveAllCustomers() {
+        return repository.retrieveAll();
+    }
 
     public void createCustomer(Customer customer) {
         repository.create(customer);

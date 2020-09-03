@@ -11,6 +11,10 @@ public class VehicleRepository {
     @PersistenceContext(unitName = "fleet")
     EntityManager entityManager;
 
+    public List<Vehicle> retrieveAll() {
+        return entityManager.createNamedQuery("allVehicles").getResultList();
+    }
+
     public void create(Vehicle vehicle) {
         entityManager.persist(vehicle);
     }
@@ -38,4 +42,5 @@ public class VehicleRepository {
     public List<Vehicle> searchUnreserved() {
         return entityManager.createNamedQuery("unreservedVehicles").getResultList();
     }
+
 }
