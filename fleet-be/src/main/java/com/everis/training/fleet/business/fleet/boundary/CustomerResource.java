@@ -34,7 +34,8 @@ public class CustomerResource {
         return Response.ok().entity(controller.retrieveCustomer(id)).build();
     }
 
-    @PUT
+    @Path("{customerId}")
+    @POST
     public Response updateCustomer(Customer customer) {
         controller.updateCustomer(customer);
         return Response.ok().entity("Customer updated.").build();
@@ -47,16 +48,16 @@ public class CustomerResource {
         return Response.ok().entity("Customer " + id + " deleted.").build();
     }
 
-    @Path("reserveVehicle/{customerId}/{vehicleVin}")
+    @Path("reserve")
     @GET
-    public Response reserveVehicle(@PathParam("customerId") Integer id, @PathParam("vehicleVin") String vin) {
+    public Response reserveVehicle(@QueryParam("customerId") Integer id, @QueryParam("vehicleVin") String vin) {
         controller.reserveVehicle(id, vin);
-        return Response.ok().entity("Vehicle reserved.").build();
+        return Response.ok().entity(id + " " + vin).build();
     }
 
-    @Path("finalizeVehicleReservation/{customerId}")
+    @Path("finalize-reservation")
     @GET
-    public Response finalizeVehicleReservation(@PathParam("customerId") Integer id) {
+    public Response finalizeVehicleReservation(@QueryParam("customerId") Integer id) {
         controller.finalizeVehicleReservation(id);
         return Response.ok().entity("Vehicle reservation finalized.").build();
     }

@@ -33,7 +33,8 @@ public class FleetResource {
         return Response.ok().entity(controller.retrieveFleet(id)).build();
     }
 
-    @PUT
+    @Path("{fleetId}")
+    @POST
     public Response updateFleet(Fleet fleet) {
         controller.updateFleet(fleet);
         return Response.ok().entity("Fleet updated.").build();

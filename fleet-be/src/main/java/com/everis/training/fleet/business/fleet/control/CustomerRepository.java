@@ -34,13 +34,11 @@ public class CustomerRepository {
 
     public void reserveVehicle(Integer id, String vin) {
         Customer customer = entityManager.find(Customer.class, id);
-        customer.setVehicle(vin);
-        entityManager.merge(customer);
+        customer.setVehicleVin(vin);
     }
 
     public void finalizeVehicleReservation(Integer id) {
         Customer customer = entityManager.find(Customer.class, id);
-        customer.setVehicle(null);
-        entityManager.merge(customer);
+        customer.setVehicleVin(null);
     }
 }

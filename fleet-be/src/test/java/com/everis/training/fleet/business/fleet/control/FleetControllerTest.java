@@ -10,16 +10,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class FleetControllerTest {
+class FleetControllerTest {
 
     @InjectMocks
-    private FleetController underTest;
+    FleetController underTest;
 
     @Mock
-    private FleetRepository repositoryMock;
+    FleetRepository repositoryMock;
 
     @Test
-    public void createFleet() {
+    void createFleet() {
         // given
         Fleet fleet = new Fleet();
         fleet.setId(1);
@@ -31,7 +31,7 @@ public class FleetControllerTest {
     }
 
     @Test
-    public void retrieveFleet() {
+    void retrieveFleet() {
         // given
         Integer id = 1;
         // when
@@ -41,7 +41,7 @@ public class FleetControllerTest {
     }
 
     @Test
-    public void updateFleet() {
+    void updateFleet() {
         // given
         Fleet fleet = new Fleet();
         fleet.setId(1);
@@ -53,7 +53,7 @@ public class FleetControllerTest {
     }
 
     @Test
-    public void deleteFleet() {
+    void deleteFleet() {
         // given
         int id = 1;
         // when
