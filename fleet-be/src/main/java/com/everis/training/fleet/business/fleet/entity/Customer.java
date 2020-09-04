@@ -1,11 +1,12 @@
 package com.everis.training.fleet.business.fleet.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "allCustomers",
+                query = "select c from Customer c")
+})
 @Table(name = "customers", schema = "public")
 public class Customer {
     @Id
@@ -14,8 +15,8 @@ public class Customer {
     @Column
     private String name;
 
-    @Column
-    private String vehicle;
+    @Column(name = "vehicle_vin")
+    private String vehicleVin;
 
     public Integer getId() {
         return id;
@@ -33,11 +34,11 @@ public class Customer {
         this.name = name;
     }
 
-    public String getVehicle() {
-        return vehicle;
+    public String getVehicleVin() {
+        return vehicleVin;
     }
 
-    public void setVehicle(String vehicle) {
-        this.vehicle = vehicle;
+    public void setVehicleVin(String vehicleVin) {
+        this.vehicleVin = vehicleVin;
     }
 }

@@ -7,8 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.inject.Inject;
-
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,10 +19,10 @@ class CustomerControllerTest {
 
 
     @Test
-    public void createCustomer() {
+    void createCustomer() {
         //given
         Customer customer = new Customer();
-        customer.setVehicle("abcde");
+        customer.setVehicleVin("abcde");
         customer.setId(1);
         customer.setName("vehiculo prueba");
         //when
@@ -34,7 +32,7 @@ class CustomerControllerTest {
     }
 
     @Test
-    public void retrieveCustomer() {
+    void retrieveCustomer() {
         //given
         Integer id = 1;
         //when
@@ -44,10 +42,10 @@ class CustomerControllerTest {
     }
 
     @Test
-    public void updateVehicle() {
+    void updateVehicle() {
         //given
         Customer customer = new Customer();
-        customer.setVehicle("abcde");
+        customer.setVehicleVin("abcde");
         customer.setId(1);
         customer.setName("vehiculo prueba");
         //when
@@ -57,7 +55,7 @@ class CustomerControllerTest {
     }
 
     @Test
-    public void deleteVehicle() {
+    void deleteVehicle() {
         //given
         Integer id = 1;
         //when
@@ -67,7 +65,7 @@ class CustomerControllerTest {
     }
 
     @Test
-    public void reserveVehicle() {
+    void reserveVehicle() {
         // given
         String vin = "vinPrueba";
         Integer id = 1;
@@ -78,7 +76,7 @@ class CustomerControllerTest {
     }
 
     @Test
-    public void finalizeVehicleReservation() {
+    void finalizeVehicleReservation() {
         // given
         Integer id = 1;
         // when

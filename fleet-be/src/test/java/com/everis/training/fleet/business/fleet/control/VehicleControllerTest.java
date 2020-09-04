@@ -23,7 +23,7 @@ class VehicleControllerTest {
         Vehicle vehicle = new Vehicle();
         vehicle.setVin("123456789abcdebhu");
         vehicle.setId(10);
-        vehicle.setFleet(1);
+        vehicle.setFleetId(1);
         vehicle.setRegistration("avcde");
         //when
         underTest.createVehicle(vehicle);
@@ -46,7 +46,7 @@ class VehicleControllerTest {
         Vehicle vehicle = new Vehicle();
         vehicle.setVin("123456789murcia12");
         vehicle.setId(1);
-        vehicle.setFleet(1);
+        vehicle.setFleetId(1);
         vehicle.setRegistration("avcde");
         //when
         underTest.updateVehicle(vehicle);

@@ -17,6 +17,11 @@ public class FleetResource {
     @Inject
     FleetController controller;
 
+    @GET
+    public Response retrieveAllVehicles() {
+        return Response.ok().entity(controller.retrieveAllFleets()).build();
+    }
+
     @POST
     public Response createFleet(Fleet fleet) {
         controller.createFleet(fleet);
@@ -28,7 +33,8 @@ public class FleetResource {
         return Response.ok().entity(controller.retrieveFleet(id)).build();
     }
 
-    @PUT
+    @Path("{fleetId}")
+    @POST
     public Response updateFleet(Fleet fleet) {
         controller.updateFleet(fleet);
         return Response.ok().entity("Fleet updated.").build();

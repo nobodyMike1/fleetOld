@@ -4,6 +4,15 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "allVehicles",
+                query = "select v from Vehicle v"),
+        @NamedQuery(name = "vehicleByVin",
+                query="select v from Vehicle v where v.vin=:vin"),
+        @NamedQuery(name = "unreservedVehicles",
+                query="select v from Vehicle v where not exists (" +
+                        "select c from Customer c where c.vehicleVin = v.vin)")
+})
 @Table(name = "vehicles", schema = "public")
 public class Vehicle implements Serializable {
     @Id
@@ -15,8 +24,8 @@ public class Vehicle implements Serializable {
     @Column
     private String registration;
 
-    @Column
-    private Integer fleet;
+    @Column(name = "fleet_id")
+    private Integer fleetId;
 
     // Gets and Sets
 
@@ -44,19 +53,11 @@ public class Vehicle implements Serializable {
         this.registration = registration;
     }
 
-    public int getFleet() {
-        return fleet;
+    public int getFleetId() {
+        return fleetId;
     }
 
-    public void setFleet(int fleet) {
-        this.fleet = fleet;
-    }
-
-    @Override
-    public String toString() {
-        return "Vehicle{" +
-                "vin='" + vin + '\'' +
-                ", registration='" + registration + '\'' +
-                ", fleet=" + fleet + "}";
+    public void setFleetId(int fleetId) {
+        this.fleetId = fleetId;
     }
 }

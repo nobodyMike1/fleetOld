@@ -19,6 +19,11 @@ public class VehicleResource {
   @Inject
   VehicleController controller;
 
+  @GET
+  public Response retrieveAllVehicles() {
+    return Response.ok().entity(controller.retrieveAllVehicles()).build();
+  }
+
   @POST
   public Response createVehicle(Vehicle vehicle) {
     controller.createVehicle(vehicle);
@@ -31,19 +36,8 @@ public class VehicleResource {
     return Response.ok().entity(controller.retrieveVehicle(id)).build();
   }
 
-  @Path("searchByVin/{vehicleVin}")
-  @GET
-  public Response searchByVin(@PathParam("vehicleVin") final String vin ) {
-    return Response.ok().entity(controller.searchByVin(vin)).build();
-  }
-
-  @Path("searchUnreservedVehicles")
-  @GET
-  public Response searchUnreservedVehicles() {
-    return Response.ok().entity(controller.searchUnreservedVehicles()).build();
-  }
-
-  @PUT
+  @Path("{vehicleId}")
+  @POST
   public Response updateVehicle(Vehicle vehicle) {
     controller.updateVehicle(vehicle);
     return Response.ok().entity("Vehicle updated.").build();
@@ -54,5 +48,17 @@ public class VehicleResource {
   public Response deleteVehicle(@PathParam("vehicleId") Integer id) {
     controller.deleteVehicle(id);
     return Response.ok().entity("Vehicle " + id + " removed from the database.").build();
+  }
+
+  @Path("search")
+  @GET
+  public Response searchByVin(@QueryParam("vin") final String vin ) {
+    return Response.ok().entity(controller.searchByVin(vin)).build();
+  }
+
+  @Path("unreserved")
+  @GET
+  public Response searchUnreservedVehicles() {
+    return Response.ok().entity(controller.searchUnreservedVehicles()).build();
   }
 }
